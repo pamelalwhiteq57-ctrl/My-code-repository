@@ -19,6 +19,6 @@ i = i.zfill(13)
 print(i)
 print()
 # print(除了zfill()，其余的都可以在长度后加上想要填充的内容，如:)
-j = "123456789"
-j = j.center(10, "q")
-print(j)
+w = "123456789"
+w = w.center(10, "q")
+print(w)
