@@ -1,0 +1,42 @@
+# ============================================================
+#  Python 学习仓库 - Git 忽略清单
+#  写在这里的文�?文件夹，Git 会当�?不存�?，永远不会提�?#  �?# 开头的行是注释，写了不生效
+# ============================================================
+
+# --- Python 自动生成的缓存（最常见，也是你最需要防的）---
+# 当你 import 自己写的模块时，Python 会自动生�?__pycache__ 文件夹，
+# 里面是编译后�?.pyc 文件。这是机器生成的，不该进仓库�?__pycache__/
+*.py[cod]
+*$py.class
+
+# --- 虚拟环境（以后学第三方库时会用到�?--
+# �?venv 创建的环境文件夹动辄几十 MB，绝对不能提�?.venv/
+venv/
+env/
+ENV/
+
+# --- 打包/安装产生的东�?---
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# --- 单元测试和类型检查的缓存 ---
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Jupyter Notebook 的检查点 ---
+.ipynb_checkpoints/
+
+# --- VSCode / PyCharm 等编辑器的个人配�?---
+# .vscode/settings.json 常含个人路径，团队协作时会互相冲�?.vscode/
+.idea/
+*.swp
+
+# --- 操作系统生成的垃圾文�?---
+.DS_Store
+Thumbs.db
+desktop.ini
