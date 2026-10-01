@@ -40,3 +40,4 @@ print("以下为isprintable的结果")
 # print("isprintable()用于判断字符串是否全为可打印字符")
 print("Hello".isprintable())
 print("Hello\n".isprintable())  # 转义字符\n不是可打印字符
+# print("isalnum()用于判断字符串是否全为字母和数字,详情见L_23")

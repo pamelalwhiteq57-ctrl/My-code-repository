@@ -1,0 +1,12 @@
+# print("isidentifier()方法用于判断字符串是否是一个合法的标识符")
+print("以下是isidentifier()的例子")
+print("abc".isidentifier())
+print("123".isidentifier())
+print("abc123".isidentifier())
+print("abc_123".isidentifier())
+print("_abc".isidentifier())
+# print("判定是否为保留标识符的方法——iskeyword()方法")
+import keyword
+print("以下是iskeyword()的例子")
+print(keyword.iskeyword("if"))
+print(keyword.iskeyword("i"))
