@@ -1,0 +1,7 @@
+# print("join()是将序列中的元素以指定的字符连接生成一个新的字符串,原字符串就是分隔符,iterable参数是可迭代对象)
+print(",".join(["Hello", "World", "Python"]))
+print()
+# print("普通拼接法:")
+print("Hello" + "World" + "Python")
+# print("join()拼接法:")
+print("".join(["Hello", "World", "Python"]))
