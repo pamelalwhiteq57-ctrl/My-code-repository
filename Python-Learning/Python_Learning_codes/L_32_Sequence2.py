@@ -1,0 +1,32 @@
+# print("min()和max()，作用是，对比传入的参数(若字符串则比较每个字符的编码值)，并返回最小值和最大值")
+# print("两种表达:min(iterable, *[,key,default])\nmin(arg1, arg2, *args[,key];max()同理)")
+s = [1, 1, 2, 3, 5]
+print(min(s))
+print(max(s))
+# print("default用于传入空对象(序列)时所返回的内容")
+v = ()
+print(min(v, default="Nope!"))
+print(max(v, default="YES"))
+# print("key指的是比较规则，默认按参数大小来比较")
+print()
+# print("len()函数与sum()函数")
+# print("len()函数不再赘述，需补充一点，len()中的参数大小是有上限的，在64位系统中为2**63 -1")
+# print("sum()函数是计算求和的，有start参数用于指定求和的一个起始额外值")
+k = [1, 0, 0, 8, 6]
+print(sum(k, start=100))
+# print("sorted()函数(支持key和reverse参数)，列表也有类似如此的方法，而这个函数不改变原列表(创建一个新的列表)且适用于可迭代对象(但只返回列表)")
+l = [1, 7, 8, 0, 4]
+print(sorted(l, reverse=True))
+l.sort()
+print(l)
+print()
+# print("key参数用法示例(sort和reverse中同样可用)")
+t = ["JJ", "AAAA", "NN", "WWWWWW", "OOO"]
+print(sorted(t))
+print(sorted(t, key=len))
+print()
+# print("reversed()返回的是参数的反向迭代器")
+m = [1, 2, 5, 8, 0]
+print(reversed(m))
+print(list(reversed(m)))
+print()
