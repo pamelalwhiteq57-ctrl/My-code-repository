@@ -40,3 +40,7 @@ htmlcov/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# --- 临时备份目录（不提交）---
+.agents-md-backup/
+
