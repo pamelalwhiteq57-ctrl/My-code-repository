@@ -30,3 +30,13 @@ m = [1, 2, 5, 8, 0]
 print(reversed(m))
 print(list(reversed(m)))
 print()
+# print("all()函数和any()函数，前者判断可迭代对象中是否所有元素都为True，后者则是判断是否存在有元组为True")
+x = [1, 1, 0]
+y = [1, 1, 9]
+print("x的all和any结果:")
+print(all(x))
+print(any(x))
+print("y的all和any结果:")
+print(all(y))
+print(any(y))
+print()
