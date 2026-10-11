@@ -1,0 +1,11 @@
+# print("集合同字典一样，其中的元素具有唯一性，且其还具有无序性")
+a = {"A", "B", "C"}
+print(type(a))
+# print("集合同样可以使用推导式")
+print({i for i in "abcdefgh"})
+# print("注意到顺序是乱的，因为集合的无序性，∴集合也是没有下标索引的")
+b = set("EWEVDN")
+print(b)
+print(b == set(["EWEVDN"]))
+# print("唯一性的体现")
+print()
