@@ -13,6 +13,7 @@ def make_tagger(start_tags):
         return set(tags_list)
     return add, all_tags
 add, unique = make_tagger(origin_tags)
+
 print("第一次添加:", add(["Python", "算法", "算法", "数据结构"]))
 print("第二次添加:", add(["笔记", "算法", "机器学习"]))
 print("累计唯一标签:", unique())
