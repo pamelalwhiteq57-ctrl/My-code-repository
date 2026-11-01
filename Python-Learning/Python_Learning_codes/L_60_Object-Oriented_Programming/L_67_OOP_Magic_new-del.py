@@ -23,4 +23,4 @@ class C:
     def __del__(self):
         print("I'm leaving")
 c: C = C()
-del C  # 但如果此时类还绑定着其他对象，则不会出发__del__()，必须全删完才会
+del C  # 但如果此时类还绑定着其他对象，则不会触发__del__()，必须全删完才会
