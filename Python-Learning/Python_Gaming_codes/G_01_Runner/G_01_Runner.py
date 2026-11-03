@@ -4,7 +4,7 @@ from random import randint, choice
 
 import pygame
 
-# ---------------------------------------------------------------- 路径工具
+# ---------------------------------------------------------------- 路径
 BASE = os.path.dirname(os.path.abspath(__file__))
 
 
@@ -31,14 +31,19 @@ class Player(pygame.sprite.Sprite):
         self.image = self.player_walk[self.player_index]
         self.rect = self.image.get_rect(midbottom=(80, 300))
         self.gravity = 0
+        self.max_jumps = 2
+        self.jumps_left = self.max_jumps
 
         self.jump_sound = pygame.mixer.Sound(asset('audio', 'jump.mp3'))
         self.jump_sound.set_volume(0.5)
 
-    def player_input(self):
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_SPACE] and self.rect.bottom >= 300:
-            self.gravity = -20
+    def jump(self):
+        if self.jumps_left > 0:
+            if self.jumps_left == self.max_jumps:
+                self.gravity = -20
+            else:
+                self.gravity = -14
+            self.jumps_left -= 1
             self.jump_sound.play()
 
     def apply_gravity(self):
@@ -46,6 +51,8 @@ class Player(pygame.sprite.Sprite):
         self.rect.y += self.gravity
         if self.rect.bottom >= 300:
             self.rect.bottom = 300
+            self.gravity = 0
+            self.jumps_left = self.max_jumps
 
     def animation_state(self):
         if self.rect.bottom < 300:
@@ -57,18 +64,18 @@ class Player(pygame.sprite.Sprite):
             self.image = self.player_walk[int(self.player_index)]
 
     def update(self):
-        self.player_input()
         self.apply_gravity()
         self.animation_state()
 
     def reset(self):
         self.rect.midbottom = (80, 300)
         self.gravity = 0
+        self.jumps_left = self.max_jumps
         self.player_index = 0
         self.image = self.player_walk[0]
 
 
-# ---------------------------------------------------------------- 障碍物
+# ---------------------------------------------------------------- 障碍
 class Obstacle(pygame.sprite.Sprite):
     def __init__(self, kind):
         super().__init__()
@@ -80,9 +87,11 @@ class Obstacle(pygame.sprite.Sprite):
             self.frames = SNAIL_FRAMES
             y_pos = 300
 
+        self.speed = 12 if kind == "fly" else 5
+
         self.animation_index = 0
         self.image = self.frames[self.animation_index]
-        self.rect = self.image.get_rect(midbottom=(randint(900, 1100), y_pos))
+        self.rect = self.image.get_rect(midbottom=(randint(800, 1100), y_pos))
 
     def animation_state(self):
         self.animation_index += 0.1
@@ -92,7 +101,7 @@ class Obstacle(pygame.sprite.Sprite):
 
     def update(self):
         self.animation_state()
-        self.rect.x -= 6
+        self.rect.x -= self.speed
         self.destroy()
 
     def destroy(self):
@@ -154,7 +163,7 @@ def collision_sprite():
     return True
 
 
-# ---------------------------------------------------------------- 主循环
+# ---------------------------------------------------------------- 
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -164,6 +173,9 @@ while True:
         if game_active:
             if event.type == obstacle_timer:
                 obstacle_group.add(Obstacle(choice(['fly', 'snail', 'snail', 'snail'])))
+
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                player.sprite.jump()
         else:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 game_active = True

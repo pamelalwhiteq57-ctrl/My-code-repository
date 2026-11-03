@@ -24,3 +24,32 @@ print()
 print("在魔法方法前加上i， 就可以实现增强赋值运算的操作")
 ...
 print()
+# print("按位运算符:")
+print("按位和运算符 &")
+print(3 & 2)
+print(bin(3 & 2))
+print("按位或运算符 |")
+print(3 | 2)
+print(bin(3 | 2))
+print("按位异或运算符 ^")
+print(3 ^ 2)
+print(bin(3 ^ 2))
+print("按位取反运算符 ~")
+print(~3)
+print(bin(~3))
+print("按位左移和右移运算符 <<, >>")
+print(3 << 1)
+print(bin(3 << 1))
+print(3 >> 1)
+print(bin(3 >> 1))
+print()
+print("__index__() 魔法方法: 通过索引获取对象的值")
+class MyInt:
+    def __index__(self):
+        print("调用了 __index__() 方法")
+        return 3
+m: MyInt = MyInt()
+# m[0]  # 不能直接使用数字索引
+s = "Hello"
+s[m]  # 使用 MyInt 对象作为索引, 才能拦截, 并调用__index__() 方法
+print(bin(m))
