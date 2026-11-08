@@ -9,7 +9,7 @@ def calc_square_loop() -> None:
             print("输入为空，请重新输入")
         try:
             num1 = float(num)
-            result = num1 ** 2 < 50
+            result = num1 ** 2
             if result < 50:
                 break
             else:
