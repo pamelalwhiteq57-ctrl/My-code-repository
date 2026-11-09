@@ -4,7 +4,7 @@ class C:
     def __contains__(self, item):
         print("Hello")
         return item in self.data
-c: C = C([1, 2 , 3, 4, 5])
+c: C = C([1, 2, 3, 4, 5])
 print(3 in c)
 print()
 '''当__contains__未实现。在对象进行同一性运算时，会用__iter__和__next__进行代偿'''

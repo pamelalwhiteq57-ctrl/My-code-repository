@@ -40,3 +40,12 @@ class D(C):
     x = 3
 print(D.x)
 print("kwds参数与__init_subclass__")
+class C:
+    def __init_subclass__(cls, value):
+        print("父类的此方法已自动触发(有以这个类为父类的子类定义完成),打印此句")
+        cls.x = value
+class D(C, value=520): #initsubclass的第三种用法，在继承时，里面的kwds参数可以被作为关键字参数的传入
+      x = 3
+print(D.x)
+D = type("D", (C,), dict(x=3), value=520)  # x=3由于initsubclass的存在仍不生效，这个参数同时也是收集参数
+print(D.x)
